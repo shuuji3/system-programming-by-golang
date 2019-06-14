@@ -28,7 +28,19 @@ func read() {
 	io.Copy(os.Stdout, file)
 }
 
+// Append text to a file
+func appendHello() {
+	file, err := os.OpenFile("hello-go-file.txt", os.O_RDWR|os.O_APPEND, 0666)
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+	io.WriteString(file, "Appended Hello Go!!\n")
+}
+
 func main() {
 	open()
+	read()
+	appendHello()
 	read()
 }
