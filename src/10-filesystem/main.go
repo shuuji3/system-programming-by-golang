@@ -38,9 +38,22 @@ func appendHello() {
 	io.WriteString(file, "Appended Hello Go!!\n")
 }
 
+// Create directory
+func createDir() {
+	os.Mkdir("test", 0644)
+	os.MkdirAll("test2/nest/dir/all", 0644)
+}
+
+func removeDir() {
+	os.Remove("test")
+	os.Remove("test2/nest/dir/all")
+}
+
 func main() {
 	open()
 	read()
 	appendHello()
 	read()
+	createDir()
+	removeDir()
 }
