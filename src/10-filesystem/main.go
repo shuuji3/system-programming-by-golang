@@ -40,13 +40,18 @@ func appendHello() {
 
 // Create directory
 func createDir() {
-	os.Mkdir("test", 0644)
-	os.MkdirAll("test2/nest/dir/all", 0644)
+	os.Mkdir("test", 0755)
+	os.MkdirAll("test2/nest/dir/all", 0755)
 }
 
 func removeDir() {
 	os.Remove("test")
 	os.Remove("test2/nest/dir/all")
+}
+
+func move() {
+	os.Rename("test2", "test3")
+	os.Rename("hello-go-file.txt", "hello-go.txt")
 }
 
 func main() {
@@ -55,5 +60,6 @@ func main() {
 	appendHello()
 	read()
 	createDir()
-	removeDir()
+	//removeDir()
+	move()
 }
